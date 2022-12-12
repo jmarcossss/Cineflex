@@ -20,13 +20,13 @@ export default function Home(){
     return movie.length > 0?(
         <section className='catalog'>
             <h1 className='title'>Selecione o filme</h1>
-            <div className="movies">
+            <div className="movies" data-test="movie">
                 {movie.map(item=><Movie poster={item.posterURL} id = {item.id} alt = {item.title}/>)}
             </div>
         </section>
     ):(
         <div className="loading">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif" alt="Carregando dados" />
+            <div alt="Loading..."></div>
         </div>
     )
 }
