@@ -24,7 +24,8 @@ export default function Home(){
                 {movie.map(item=><Movie poster={item.posterURL} id = {item.id} alt = {item.title}/>)}
             </div>
         </section>
-    ):(
+    )
+    :(
         <div className="loading">
             <div alt="Loading..."></div>
         </div>
@@ -36,7 +37,7 @@ function Movie(props){
     const link = `/movie/${id}`
     return(
         <Link to= {link}>
-            <div className="movie">
+            <div className="movie" data-test="movie">
                 <img src={poster} alt={alt} className="poster" />       
             </div>
         </Link>

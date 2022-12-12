@@ -115,6 +115,7 @@ function Seat(props){
     )
 }
 
+// Alguns styled-components
 const Div= styled.div `
     width: 100%;
     max-width: 350px;
