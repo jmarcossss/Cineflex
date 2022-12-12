@@ -7,7 +7,6 @@ let seats = [];
 
 export default function Finish(){
     const navigate = useNavigate();
-
     useEffect(() => {
         if (seats.length===0){
       navigate("/")   
@@ -20,18 +19,24 @@ export default function Finish(){
             <h1>Pedido feito<br></br>com sucesso!</h1>
         </Title>
         <Content>
-            <h1>Filme e sessão</h1>
+            <div class="englobar_nome_e_sessao" data-test="movie-info">
+                <h1>Filme e sessão</h1>
                 <p>{data.title}</p>
                 <p>{data.date}</p>
-            <h1>Ingressos</h1>
-            <ul>
-                {seats.map(item=> <><li>Assento {item}</li><br /></>)}
-            </ul>
-            <h1>Comprador</h1>
-            <p>Nome: {data.name}</p>
-            <p>CPF: {data.cpf}</p>
+            </div>
+            <div class="englobar_ingressos" data-test="seats-info">
+                <h1>Ingressos</h1>
+                <ul>
+                    {seats.map(item=> <><li>Assento {item}</li><br /></>)}
+                </ul>
+            </div>
+            <div class="englobar_comprador" data-test="client-info">
+                <h1>Comprador</h1>
+                <p>Nome: {data.name}</p>
+                <p>CPF: {data.cpf}</p>
+            </div>
             <Link to= '/'>
-                <button>Voltar pra Home</button>
+                <button data-test="go-home-btn">Voltar pra Home</button>
             </Link>
         </Content>
         </>
@@ -39,14 +44,12 @@ export default function Finish(){
         :
         (
             <Title>
-                <h1>Nada para ver aqui</h1>
+                <h1>Nada aqui</h1>
             </Title>
         )
-
 }
 
 export function GetData(title, date, seat, name, cpf){
-    
     data.title = title;
     data.date = date;
     seats = seat;
@@ -55,7 +58,6 @@ export function GetData(title, date, seat, name, cpf){
 }
 
 // Alguns styled-components
-
 const Title= styled.div `
     position: absolute;
     width: 100vw;

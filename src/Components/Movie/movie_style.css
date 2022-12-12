@@ -1,4 +1,4 @@
-.sessions{
+.sessions {
     position:absolute;
     padding-top: 112px;
     top: 67px;
@@ -8,13 +8,15 @@
     overflow: scroll;
     overflow-x: hidden;
 }
-.sessions .title{
+
+.sessions .title {
     position:absolute;
     width: 100%;
     top:0;
     left: 0;
 }
-.session{
+
+.session {
     width:80vw;
     font-family: 'Roboto';
     font-style: normal;
@@ -25,7 +27,8 @@
     margin-bottom: 22px;
     color: var(--black);
 }
-.session button{
+
+.session button {
     width: 83px;
     height: 43px;
     margin-right: 20px;
@@ -34,6 +37,7 @@
     color: #FFFFFF;
     font-size: 18px;
 }
-.session .date{
+
+.session .date {
     margin-bottom: 22px;
 }

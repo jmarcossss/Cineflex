@@ -1,5 +1,4 @@
-/* eslint-disable-next-line */
-footer{
+footer {
     position:fixed;
     bottom: 0;
     left:0;
@@ -7,7 +6,7 @@ footer{
     width: 100%;
     background-color: var(--footer-color);
 }
-.footer{
+.footer {
     position:absolute;
     left: 10px;
     height: 100%;
@@ -16,7 +15,7 @@ footer{
     justify-content: start;
     align-items: center;
 }
-footer .footerPoster{
+footer .footerPoster {
     width: 64px;
     height: 89px;
     margin-right: 14px;
@@ -26,11 +25,11 @@ footer .footerPoster{
     background-color: #FFFFFF;
 }
 
-footer .footerPoster img{
+footer .footerPoster img {
     width: 48px;
     height: 72px;
 }
-footer .data{
+footer .data {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;

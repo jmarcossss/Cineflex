@@ -8,17 +8,17 @@ export function SendData(props){
     const {data, title, date} = props;
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
-    let dataNumber = [];
-    let dataId =[];
     const navigate = useNavigate();
     const URL = "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many";
+    let dataNumber = [];
+    let dataId =[];
     
-    function clear(){
+    function clear() {
         setName("");
         setCpf("");
     }
 
-    function validate(){
+    function validate() {
         const regex = /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/;
         const cpfText = regex.test(cpf);
         if(!cpfText){
@@ -27,13 +27,13 @@ export function SendData(props){
         }
         return true;
     }
-    function send_data(e){
+    function send_data(e) {
         e.preventDefault();
         GetData(title, date, dataNumber, name, cpf);
         Object.keys(data).map(item=>data[item].value?dataNumber.push(data[item].value):null);
         Object.keys(data).map(item=>data[item].id?dataId.push(data[item].id):null);
 
-        if(validate()){
+        if(validate()) {
             const promise = axios.post(URL, {
                 ids: dataId,
                 name: name,
@@ -44,7 +44,6 @@ export function SendData(props){
             });
             promise.catch(err => alert(err));
             
-        
         console.log(name, cpf);
         clear();
         }
@@ -53,10 +52,10 @@ export function SendData(props){
         <Form>
         <form onSubmit={send_data}>
             <label For="name">Nome do comprador:</label><br/>
-            <input type="text" id="name" placeholder="Digite seu nome... " value={name} onChange={e => setName(e.target.value)}/><br/>
+            <input type="text" id="name" placeholder="Digite seu nome... " value={name} onChange={e => setName(e.target.value)} data-test="client-name" /><br/>
             <label For="cpf">CPF do comprador:</label><br/>
-            <input type="text" id="cpf" placeholder="Digite seu CPF..." value={cpf} onChange={e => setCpf(e.target.value)}/><br/>
-            <button type="submit" >Reservar assento(s)</button>
+            <input type="text" id="cpf" placeholder="Digite seu CPF..." value={cpf} onChange={e => setCpf(e.target.value)} data-test="client-cpf" /><br/>
+            <button type="submit" data-test="book-seat-btn" >Reservar assento(s)</button>
         </form>
         </Form>
     )
@@ -67,7 +66,6 @@ const Form = styled.div`
     bottom:0;
     width: 100%;
     margin-top: 30px;
-    
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -75,7 +73,7 @@ const Form = styled.div`
     line-height: 21px;
     color: var(--black);
 
-    input{
+    input {
         width: 100%;
         height: 40px;
         margin-bottom: 10px;
@@ -84,7 +82,7 @@ const Form = styled.div`
         box-sizing: border-box;
         border-radius: 3px;
     }
-    button{
+    button {
         width: 80%;
         height: 42px;
         background: var(--assets-color);

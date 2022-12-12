@@ -1,10 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import axios from 'axios';
 import Header from '../Header/Header.js';
-import {Footer} from '../Footer/index.js';
+import {Footer} from '../Footer/Footer.js';
 import {SendData} from './SendData';
 import "./session_style.css";
 
@@ -33,38 +32,39 @@ export default function Session(){
         <section className="purchase">
             <div className = "header">
                 <ion-icon onClick={()=>{navigate(-1)}} name="chevron-back-circle"></ion-icon>
-                {status?<h1 className="title">Selecione o(s) assentos</h1>:<h1 className="title">Sessão esgotada</h1>}
-            {/* <h1 className="title">Selecione o(s) assentos</h1> */}
+                {status?<h1 className="title">Selecione o(s) assento(s) desejado(s)</h1>:<h1 className="title">Sessão esgotada</h1>}
+            {}
             </div>
-            <section className="seats">
-            
-                {
-                    
-                movie.seats.map(item => <Seat available={item.isAvailable} number={item.name} id={item.id} status={(i)=>{if(i)setStatus(true)}} callback={(value, info, mode)=>{
-                    mode? 
+            <section className="seats" data-test="seat">
+                {        
+                movie.seats.map(item => <Seat available={item.isAvailable}
+                    number={item.name} 
+                    id={item.id} 
+                    status={(i)=>{if(i)setStatus(true)}} 
+                    callback={(value, info, mode) => {mode? 
                     setSeats({...seats,[value]: {'value':value, 'id': info}}) :
                     setSeats({...seats,[value]: [delete [value]]});
                 }
-                
+
                 } />
                 )
-                
                 }
-                {/* {seats? console.log(seats):<></>} */}
                 <Div>
                     <Reference>
                         <Selected></Selected>
-                        <p>Selecionado</p>
+                        <p data-test="seat">
+                            Selecionado
+                        </p>
                     </Reference>
                     <Reference>
                         <Available></Available>
-                        <p>
+                        <p data-test="seat">
                             Disponível
                         </p>
                     </Reference>
                     <Reference>
                         <Unavailable></Unavailable>
-                        <p>
+                        <p data-test="seat">
                             Indisponível
                         </p>
                     </Reference>
@@ -83,13 +83,13 @@ export default function Session(){
             </section>
             
         </section>
-        <Footer poster={movie.movie.posterURL} title={movie.movie.title} date={`${movie.day.weekday} - ${movie.name}`} />
+        <Footer poster={movie.movie.posterURL} title={movie.movie.title} date={`${movie.day.weekday} - ${movie.name}`} data-test="footer" />
         <Hiden>
         </Hiden>
         </>
     ):(
         <div className="loading">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif" alt="Carregando dados" />
+            <div alt="Loading..."></div>
         </div>
     )
 }

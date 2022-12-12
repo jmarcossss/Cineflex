@@ -3,7 +3,7 @@ import Session from '../Session/Session.js';
 import Finish from '../Finish/Finish.js';
 import Header from '../Header/Header.js';
 import Home from "../Home/Home.js"
-import Movie from '../Movie/Movie.js.js';
+import Movie from '../Movie/Movie.js';
 import './app_style.css';
 
 export default function App() {
